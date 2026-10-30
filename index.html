@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Samuel Fleming | Mod Superhero</title>
+<meta name="description" content="Samuel Fleming writes science fiction and dark fantasy. Mod Superhero is complete: seven books, almost a million words.">
+<meta property="og:title" content="A homepage for Samuel Fleming, made by Sparsh Saini">
+<meta property="og:description" content="A homepage idea for Samuel Fleming and Mod Superhero, made by Sparsh Saini. Not their official site.">
+<meta property="og:image" content="https://sparshsainied-prog.github.io/samuelfleming/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23171717'/><path d='M9 26l4-20h3l-4 20zM17 26l4-20h3l-4 20z' fill='%23f5871f'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/window.webp">
+<style>
+/* From the Mod Superhero: Singularity cover: the black ground, the grey circuit-board frame, the
+   teal title with its orange outline, the orange vein glow, the chrome author name.
+   Anton is the cover's tall condensed title capitals; Montserrat is its wide author line. */
+:root {
+  --black: #161616; --black-2: #0e0f10; --steel: #8a9294; --steel-2: #3b4142;
+  --teal: #1d5568; --teal-2: #123a48; --orange: #f5871f; --gold: #ffc23a; --chrome: #eef1f2;
+  --display: "Anton", Impact, sans-serif; --text: "Montserrat", system-ui, sans-serif;
+  --gut: clamp(1rem, 5vw, 4rem);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--black); color: var(--chrome); font-family: var(--text); font-size: 1.05rem; line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; margin: 0; text-transform: uppercase; letter-spacing: .01em; }
+/* the cover's title: teal fill, orange keyline, dark drop */
+.ttl { color: #3d93ad; -webkit-text-stroke: 1.5px var(--orange); paint-order: stroke fill; text-shadow: 0 4px 0 #0a1e26; transform: skewY(-3deg); }
+
+.strip { position: relative; z-index: 30; background: var(--orange); color: var(--black); font-weight: 700; font-size: .85rem; text-align: center; padding: .45rem var(--gut); }
+
+/* nav: a "book" readout like BOOK SEVEN under the title */
+.menu { position: fixed; z-index: 40; right: 12px; top: 12px; background: var(--black-2); color: var(--orange); border: 2px solid var(--steel-2); font: 700 .85rem var(--text); letter-spacing: .14em; text-transform: uppercase; padding: .5rem .8rem; cursor: pointer; }
+.menu::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); margin-right: .5rem; vertical-align: 1px; }
+.nav { position: fixed; z-index: 50; inset: 0; background: rgba(14,15,16,.94); display: none; padding: 4.5rem var(--gut); }
+.nav.open { display: block; }
+.nav ol { list-style: none; margin: 0; padding: 0; counter-reset: b; }
+.nav li { border-top: 1px solid var(--steel-2); }
+.nav a { display: block; padding: .8rem 0; font-family: var(--display); font-size: 2rem; text-transform: uppercase; text-decoration: none; color: var(--chrome); }
+.nav a:hover { color: var(--orange); }
+
+/* ---------- the upgrade (pinned hero) ---------- */
+.hero { position: relative; height: 360vh; }
+.stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--black); }
+.cover { position: absolute; left: 50%; top: 58px; transform: translateX(-50%); width: min(calc(100vw - 24px), calc((100svh - 216px) * .6247)); aspect-ratio: 1440 / 2305; overflow: hidden; background: var(--black); }
+.pl { position: absolute; max-width: none; will-change: transform, opacity; }
+.window { left: 10.417%; top: 38.18%; width: 79.17%; transform-origin: 48% 14%; }
+.frame { left: 0; top: 0; width: 100%; opacity: 0; }
+.title { left: 0; top: 0; width: 100%; opacity: 0; }
+.charge { left: 0; top: 32.97%; width: 100%; opacity: 0; }
+.cap { position: absolute; left: var(--gut); right: var(--gut); bottom: 18px; height: 130px; }
+.cap > div { position: absolute; inset: 0; opacity: 0; will-change: opacity; }
+.cap .c1 { opacity: 1; }
+.cap p { margin: 0; font-size: 1rem; line-height: 1.45; }
+.cap .k { font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--steel); font-size: .8rem; }
+.cap .big { font-family: var(--display); font-size: 1.9rem; line-height: 1.05; text-transform: uppercase; }
+.cap .big em { font-style: normal; color: var(--orange); }
+.btn { display: inline-block; margin-top: .55rem; font: 700 .85rem var(--text); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; background: var(--teal); color: var(--chrome); border: 2px solid var(--orange); padding: .6rem 1rem; box-shadow: 0 4px 0 #0a1e26; }
+.btn:hover { background: var(--orange); color: var(--black); }
+.btn.ghost { background: none; border-color: var(--steel); }
+@media (min-width: 900px) {
+  .cover { left: auto; right: 9vw; top: 50%; transform: translateY(-50%); width: calc((100svh - 60px) * .6247); }
+  .cap { left: var(--gut); right: auto; bottom: auto; top: 50%; height: 16rem; width: min(30rem, 38vw); transform: translateY(-50%); }
+  .cap .big { font-size: 3.2rem; }
+  .cap p { font-size: 1.12rem; }
+}
+
+/* ---------- sections ---------- */
+section.s { padding: clamp(3.5rem, 9vw, 6.5rem) var(--gut); }
+.s h2 { font-size: clamp(2.6rem, 9vw, 4.6rem); }
+.lede { max-width: 40rem; margin: 1rem 0 0; }
+.series { background: var(--black-2); border-top: 6px solid var(--steel-2); }
+.shelf { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; margin-top: 2.2rem; }
+@media (min-width: 700px) { .shelf { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1100px) { .shelf { grid-template-columns: repeat(7, 1fr); } }
+.bk a { text-decoration: none; display: block; }
+.bk img { box-shadow: 0 6px 0 #000; }
+.bk b { display: block; margin-top: .6rem; font-family: var(--display); font-size: 1.35rem; text-transform: uppercase; font-weight: 400; }
+.bk span { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+.bk .au { color: var(--steel); text-decoration: underline; font-size: .78rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.where { margin-top: 2rem; max-width: 44rem; color: #c3c9cb; font-size: .97rem; }
+
+.next { background: #10181b; border-top: 6px solid var(--teal); display: grid; gap: 1.6rem; }
+@media (min-width: 900px) { .next { grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; } }
+.next .read { border-left: 4px solid var(--orange); padding-left: 1.1rem; }
+.next .read p { margin: .5rem 0; }
+.next .read b { font-family: var(--display); font-weight: 400; font-size: 1.4rem; text-transform: uppercase; color: var(--gold); }
+
+.worlds { background: var(--black); }
+.worlds ul { list-style: none; margin: 2rem 0 0; padding: 0; max-width: 52rem; }
+.worlds li { padding: 1.1rem 0; border-top: 1px solid var(--steel-2); }
+.worlds li b { font-family: var(--display); font-weight: 400; font-size: 1.7rem; text-transform: uppercase; display: block; }
+.worlds li i { font-style: normal; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+.worlds li p { margin: .3rem 0 0; color: #c3c9cb; }
+
+.table { background: var(--black-2); border-top: 6px solid var(--steel-2); }
+.ticket { margin-top: 1.8rem; border: 2px solid var(--steel); padding: 1.4rem; max-width: 34rem; position: relative; }
+.ticket::before, .ticket::after { content: ""; position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--steel); top: 10px; }
+.ticket::before { left: 10px; } .ticket::after { right: 10px; }
+.ticket .d { font-family: var(--display); font-size: clamp(2.6rem, 11vw, 4.4rem); color: var(--orange); line-height: 1; text-transform: uppercase; }
+.ticket p { margin: .5rem 0 0; }
+.about { background: var(--black); }
+.about p { max-width: 40rem; }
+footer { background: var(--black-2); color: var(--steel); text-align: center; font-size: .85rem; padding: 1.2rem var(--gut) 2.5rem; border-top: 1px solid var(--steel-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero { height: auto; }
+  .stage { position: relative; height: 100svh; }
+}
+</style>
+</head>
+<body>
+<div class="strip">A homepage idea made by Sparsh Saini for Samuel Fleming. Not their official site.</div>
+<button class="menu" aria-expanded="false" aria-controls="nav">Book seven</button>
+<nav class="nav" id="nav" aria-label="Sections">
+  <ol>
+    <li><a href="#top">Singularity</a></li>
+    <li><a href="#series">All seven books</a></li>
+    <li><a href="#next">What's next</a></li>
+    <li><a href="#worlds">Other worlds</a></li>
+    <li><a href="#table">Leonardtown, 7 November</a></li>
+    <li><a href="#about">About Sam</a></li>
+  </ol>
+</nav>
+
+<main>
+<section class="hero" id="top" aria-label="Mod Superhero: Singularity">
+  <div class="stage">
+    <div class="cover" role="img" aria-label="The cover of Mod Superhero: Singularity, book seven, by Samuel Fleming: a cyborg with glowing orange veins leaping over a night city inside a circuit-board frame">
+      <img class="pl window" src="img/window.webp" alt="" width="760" height="753">
+      <img class="pl charge" src="img/charge.webp" alt="" width="960" height="827">
+      <img class="pl frame" src="img/frame.webp" alt="" width="960" height="1537">
+      <img class="pl title" src="img/title.webp" alt="" width="960" height="573">
+    </div>
+    <div class="cap">
+      <div class="c1"><p class="k">Mod Superhero, book seven</p><p class="big">Power is just an <em>upgrade</em> away.</p></div>
+      <div class="c2"><p class="k">Complete. Seven books.</p><h1 class="big">Mod Superhero: <em>Singularity</em></h1><p>Almost 1,000,000 words of sci-fi superhero action, and the finale is out now.</p><a class="btn" href="https://www.amazon.com/dp/B0HHKST7NZ">Get Singularity on Amazon</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="s series" id="series">
+  <h2 class="ttl">Seven books. One cyborg.</h2>
+  <p class="lede">Emmett was caught between college and his engineering internship. Then he got caught between a powerful hero and an even stronger villain, and woke up a cyborg. He's a Class 1 hero in Belport. He needs to get stronger. A lot stronger.</p>
+  <div class="shelf">
+    <div class="bk"><a href="https://www.amazon.com/dp/B0CCF7BCWF"><img src="img/mod1.jpg" alt="Mod Superhero: Initialize cover" width="480" height="768" loading="lazy"><span>Book one</span><b>Initialize</b></a><a class="au" href="https://www.audible.com/pd/Initialize-Audiobook/B0CX5X3Q8G">Audiobook</a></div>
+    <div class="bk"><a href="https://www.amazon.com/dp/B0CCF9F5N8"><img src="img/mod2.jpg" alt="Mod Superhero: Execute cover" width="480" height="768" loading="lazy"><span>Book two</span><b>Execute</b></a><a class="au" href="https://www.audible.com/pd/Execute-Audiobook/B0D1DN3TZ7">Audiobook</a></div>
+    <div class="bk"><a href="https://www.amazon.com/dp/B0CSHH7K45"><img src="img/mod3.jpg" alt="Mod Superhero: Flux cover" width="480" height="768" loading="lazy"><span>Book three</span><b>Flux</b></a><a class="au" href="https://www.audible.com/pd/Flux-Audiobook/B0D4ZLVTY3">Audiobook</a></div>
+    <div class="bk"><a href="https://www.amazon.com/dp/B0D92MFX6G"><img src="img/mod4.jpg" alt="Mod Superhero: Delta cover" width="480" height="768" loading="lazy"><span>Book four</span><b>Delta</b></a></div>
+    <div class="bk"><a href="https://www.amazon.com/dp/B0DV4P67B6"><img src="img/mod5.jpg" alt="Mod Superhero: Threads cover" width="480" height="768" loading="lazy"><span>Book five</span><b>Threads</b></a></div>
+    <div class="bk"><a href="https://www.amazon.com/dp/B0FWYV6GGV"><img src="img/mod6.jpg" alt="Mod Superhero: Glitch cover" width="480" height="768" loading="lazy"><span>Book six</span><b>Glitch</b></a></div>
+    <div class="bk"><a href="https://www.amazon.com/dp/B0HHKST7NZ"><img src="img/mod7.jpg" alt="Mod Superhero: Singularity cover" width="480" height="768" loading="lazy"><span>Book seven</span><b>Singularity</b></a></div>
+  </div>
+  <p class="where">Ebooks on Amazon and in Kindle Unlimited. Print through most retailers, and you can ask your local library for it. Audiobooks from Podium on Audible.</p>
+</section>
+
+<section class="s next" id="next">
+  <div>
+    <h2 class="ttl">Book one of something new</h2>
+    <p class="lede">The first book of a new series is finished, about 120,000 words, and book two is under way. Chapters start on Royal Road in early 2027, then the books follow on Amazon in the spring.</p>
+  </div>
+  <div class="read">
+    <p><b>Read it early</b></p>
+    <p>The serial chapters are where early readers give feedback and catch typos. That kind of support is invaluable to an indie author.</p>
+    <a class="btn ghost" href="https://samuelflemingbooks.com/newsletter-sign-up/">Get the monthly newsletter</a>
+  </div>
+</section>
+
+<section class="s worlds" id="worlds">
+  <h2 class="ttl">Other worlds</h2>
+  <ul>
+    <li><i>Eluthiya, dark fantasy</i><b>A Battleaxe and a Metal Arm</b><p>A sorceress with a metal arm and a barbarian with a battleaxe, journeying across impossible, changing realms. Two years of monthly releases, over 300,000 words, complete.</p></li>
+    <li><i>Eluthiya, short stories</i><b>Tales from Another World</b><p>The ongoing fantasy collection. Five volumes and counting.</p></li>
+    <li><i>Dante, retold</i><b>A Soldier's Absolution</b><p>Lieutenant Hector Ramirez goes down into Hell, across Purgatory and up into Heaven. The Divine Comedy in modern prose, so you won't need an annotated version.</p></li>
+  </ul>
+</section>
+
+<section class="s table" id="table">
+  <h2 class="ttl">Find the table</h2>
+  <div class="ticket">
+    <div class="d">Sat 7 Nov</div>
+    <p><b>St. Mary's County Library Author Fair</b>, Leonardtown Library, Maryland, 10 am to 4 pm.</p>
+    <p>On the fair list: Mod Superhero, The Woman in the Chimney and the Battleaxe novellas.</p>
+  </div>
+</section>
+
+<section class="s about" id="about">
+  <h2 class="ttl">About Sam</h2>
+  <p class="lede">Samuel Fleming writes science fiction and fantasy that explore survival and adaptation, and occasionally horror. A background in English, and in a past life a lifeguard and pool manager. When not writing, Sam is exploring other worlds through reading or gaming: lately Cradle, Dungeon Crawler Carl and Children of Time.</p>
+  <p><a class="btn ghost" href="https://www.instagram.com/samuelflemingbooks/">Instagram</a> <a class="btn ghost" href="http://amazon.com/author/samuelfleming">Amazon author page</a></p>
+</section>
+</main>
+<footer>A mockup made by Sparsh Saini for Samuel Fleming. Not affiliated, not live.</footer>
+
+<script>
+(() => {
+  const m = document.querySelector('.menu'), n = document.getElementById('nav');
+  m.addEventListener('click', () => { const o = n.classList.toggle('open'); m.setAttribute('aria-expanded', o); });
+  n.addEventListener('click', e => { if (e.target.closest('a')) { n.classList.remove('open'); m.setAttribute('aria-expanded', false); } });
+  const hero = document.querySelector('.hero'), q = s => document.querySelector(s);
+  const win = q('.window'), fr = q('.frame'), ti = q('.title'), ch = q('.charge'), c1 = q('.c1'), c2 = q('.c2');
+  const cl = (x, a, b) => Math.min(1, Math.max(0, (x - a) / (b - a)));
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let top = 0, span = 1;
+  const measure = () => { top = hero.offsetTop; span = hero.offsetHeight - innerHeight; };
+  const draw = p => {
+    const z = ease(cl(p, 0, .55));
+    win.style.transform = `scale(${2.7 - 1.7 * z})`;
+    const f = ease(cl(p, .3, .62));
+    fr.style.opacity = f; fr.style.transform = `scale(${1.18 - .18 * f})`;
+    const t = ease(cl(p, .5, .76));
+    ti.style.opacity = t; ti.style.transform = `translateY(${(1 - t) * -45}%)`;
+    // the veins charge up last: flare, then settle to the printed glow
+    const a = cl(p, .74, .86), b = cl(p, .86, 1);
+    ch.style.opacity = (a * (1 - .6 * b)).toFixed(3);
+    const k = cl(p, .5, .66);
+    c1.style.opacity = 1 - k; c2.style.opacity = k; c2.style.pointerEvents = k > .5 ? 'auto' : 'none';
+  };
+  if (reduce) { draw(.9); return; }
+  measure(); addEventListener('resize', measure);
+  let last = -1;
+  const tick = () => { const p = Math.min(1, Math.max(0, (scrollY - top) / span)); if (p !== last) { draw(p); last = p; } requestAnimationFrame(tick); };
+  draw(0); requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
